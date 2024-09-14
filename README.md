@@ -30,7 +30,12 @@ Esta API visa proporcionar uma solução completa e eficiente para o gerenciamen
 
 ## Instalação e Configuração
 
-### 1. Instalar Dependências
+### 1. Rodando na sua máquina
+
+Clone o repositório
+```bash
+https://github.com/MuraroGuilherme/ToDoList
+```
 
 Certifique-se de que você tem o [Node.js](https://nodejs.org/) e o npm instalados. Caso não tenha, faça o download e instale a partir do site oficial do Node.js.
 
