@@ -32,7 +32,7 @@ Esta API visa proporcionar uma solução completa e eficiente para o gerenciamen
 
 ### 1. Rodando na sua máquina
 
-Clone o repositório
+Clone o repositório.
 ```bash
 git clone https://github.com/MuraroGuilherme/ToDoList
 ```
@@ -45,18 +45,18 @@ Para instalar as dependências do projeto, execute:
 npm install
 ```
 
-Para o banco de dados, certifique que o prisma está instalado
+Para o banco de dados, certifique que o prisma está instalado.
 
 ```bash
 npm install prisma --save-dev
 ```
-E inicialize
+E inicialize.
 
 ```bash
 npx prisma db push
 ```
 
-Crie um arquivo .env na raiz do projeto e defina a variável para conectar-se ao banco
+Crie um arquivo .env na raiz do projeto e defina a variável para conectar-se ao banco.
 ```bash
 DATABASE_URL="mysql://user:password@localhost:3000/todolist"
 ```
