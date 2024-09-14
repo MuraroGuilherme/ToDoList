@@ -11,7 +11,7 @@ class TaskController {
 
             res.status(201).json(createTask);
         } catch {
-            res.status(500).json({ error: 'Erro ao criar a tarefa' });
+            res.status(500).json({ error: 'Error on creating the task' });
         }
     }
 
@@ -21,30 +21,55 @@ class TaskController {
 
             res.status(200).json(returnAllTask)
         } catch {
-            res.status(500).json({ error: 'Erro ao chamar as tarefas' })
-
+            res.status(500).json({ error: 'Error on calling the tasks' })
         }
     }
     returnById = async (req: Request, res: Response) => {
         try {
-            const id = parseInt(req.params.id)
-            const returnbyId = await taskModels.returnById(id);
+            const id = parseInt(req.params.id);
+            if (id) {
+                const returnbyId = await taskModels.returnById(id);
+                res.status(200).json(returnbyId)
+            }
+            else {
+                res.json({ message: 'Missing parameters' })
+            }
 
-            res.status(200).json(returnbyId)
         } catch {
-            res.status(500).json({ error: 'Erro ao chamar a tarefa' })
+            res.status(500).json({ error: 'Error on calling the task' })
         }
     }
 
-    updateById = async (req: Request, res: Response) => {
+    updateTask = async (req: Request, res: Response) => {
         try {
             const id = parseInt(req.params.id);
             const { name, description, status } = req.body
-            const updateById = await taskModels.update(id, name, description, status)
+            if (id) {
+                const updateTask = await taskModels.update(id, name, description, status)
 
-            res.status(200).json(updateById)
+                res.status(200).json(updateTask)
+            } else {
+                res.json({ message: 'Missing parameters' })
+            }
+
         } catch {
-            res.status(500).json({ error: 'Erro ao atualizar tarefa' })
+            res.status(500).json({ error: 'Error on updating the task' })
+        }
+    }
+
+    deleteTask = async (req: Request, res: Response) => {
+        try {
+            const id = parseInt(req.params.id);
+            if (id) {
+                const deleteTask = await taskModels.delete(id)
+                res.status(200).json({ message: 'Task successfully deleted' })
+
+            } else {
+                res.json({ message: 'Missing parameters' })
+            }
+
+        } catch {
+            res.status(500).json({ error: 'Error on deleting the task' })
         }
     }
 }

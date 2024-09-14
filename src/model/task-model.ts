@@ -16,6 +16,22 @@ class TaskModels {
         return await prisma.task.findMany()
     }
 
+    returnById = async (id: number) => {
+        return await prisma.task.findUnique({
+            where: {
+                id: id,
+            },
+        })
+    }
+
+    returnFinished = async (status: boolean) => {
+        return await prisma.task.findMany({
+            where: {
+                status: status,
+            }
+        })
+    }
+
     update = async (id: number, name: string, description: string, status: boolean) => {
         return await prisma.task.update({
             where: {
@@ -29,18 +45,10 @@ class TaskModels {
         })
     }
 
-    returnById = async (id: number) => {
-        return await prisma.task.findUnique({
+    delete = async (id: number) => {
+        return await prisma.task.delete({
             where: {
-                id: id,
-            },
-        })
-    }
-
-    returnFinished = async (data: number) => {
-        return await prisma.task.findMany({
-            where: {
-                status: data,
+                id: id
             }
         })
     }
