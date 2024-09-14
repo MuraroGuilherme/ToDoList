@@ -1,15 +1,24 @@
 import { prisma } from "../database/prisma-client";
-import { Request, Response } from "express";
 
 class TaskModels {
     create = async (name: string, description: string, status: boolean) => {
-        return await prisma.task.create({
-            data: {
-                name: name,
-                description: description,
-                status: status
-            }
-        })
+        if (status != null)
+            return await prisma.task.create({
+                data: {
+                    name: name,
+                    description: description,
+                    status: status
+                }
+            })
+        else {
+            return await prisma.task.create({
+                data: {
+                    name: name,
+                    description: description,
+                    status: false
+                }
+            })
+        }
     }
 
     returnAll = async (status: boolean) => {

@@ -1,3 +1,4 @@
+import { empty } from "@prisma/client/runtime/library";
 import { taskModels } from "../model/task-model";
 import { Request, Response } from "express";
 
@@ -7,9 +8,14 @@ class TaskController {
     createTask = async (req: Request, res: Response) => {
         try {
             const { name, description, status } = req.body
-            const createTask = await taskModels.create(name, description, status);
+            if (name.trim() !== "") {
+                const createTask = await taskModels.create(name, description, status);
 
-            res.status(201).json(createTask);
+                res.status(201).json(createTask);
+            } else {
+                res.json({ message: "Missing parameters" })
+            }
+
         } catch {
             res.status(500).json({ error: 'Error on creating the task' });
         }
@@ -38,7 +44,7 @@ class TaskController {
             }
 
         } catch {
-            res.status(500).json({ error: 'Error on calling the task' })
+            res.status(404).json({ error: 'Task not found' })
         }
     }
 
@@ -47,7 +53,7 @@ class TaskController {
         try {
             const id = parseInt(req.params.id);
             const { name, description, status } = req.body
-            if (id) {
+            if (id && (name.trim() !== "")) {
                 const updateTask = await taskModels.update(id, name, description, status)
 
                 res.status(200).json(updateTask)
@@ -57,6 +63,7 @@ class TaskController {
 
         } catch {
             res.status(500).json({ error: 'Error on updating the task' })
+            res.status(404).json({ error: 'Not found' })
         }
     }
 
@@ -73,7 +80,7 @@ class TaskController {
             }
 
         } catch {
-            res.status(500).json({ error: 'Error on deleting the task' })
+            res.status(404).json({ error: 'Task not found' })
         }
     }
 }
