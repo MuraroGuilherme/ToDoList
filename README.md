@@ -60,4 +60,14 @@ Crie um arquivo .env na raiz do projeto e defina a variável para conectar-se ao
 ```bash
 DATABASE_URL="mysql://user:password@localhost:3000/todolist"
 ```
+Inicie a API
+```bash
+npm run dev
+```
+## Documentação com Swagger
+
+Após configurar a API, basta acessar este link
+```bash
+http://localhost:3000/docs
+```
 
