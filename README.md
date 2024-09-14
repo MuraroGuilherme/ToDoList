@@ -66,7 +66,7 @@ npm run dev
 ```
 ## Documentação com Swagger
 
-Após configurar a API, basta acessar este link
+Após configurar a API, para acessar a documentação, basta entrar neste link:
 ```bash
 http://localhost:3000/docs
 ```
