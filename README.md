@@ -1,5 +1,3 @@
-# API Documentation
-
 # API To Do List
 
 Este projeto é uma API desenvolvida para gerenciar uma lista de tarefas (To Do List). A API fornece funcionalidades completas de CRUD (Create, Read, Update, Delete) para gerenciar tarefas. 
