@@ -16,19 +16,23 @@ class TaskModels {
         return await prisma.task.findMany()
     }
 
-    update = async (id: number, data: object) => {
+    update = async (id: number, name: string, description: string, status: boolean) => {
         return await prisma.task.update({
             where: {
                 id: id,
             },
-            data,
+            data: {
+                name: name,
+                description: description,
+                status: status
+            }
         })
     }
 
-    returnById = async (data: number) => {
+    returnById = async (id: number) => {
         return await prisma.task.findUnique({
             where: {
-                id: data,
+                id: id,
             },
         })
     }

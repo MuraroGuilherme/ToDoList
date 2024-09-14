@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, request, response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { taskController } from './controller/task-controller';
 
@@ -16,6 +16,14 @@ app.post('/tasks', (req: Request, res: Response) => {
 app.get('/tasks', (req: Request, res: Response) => {
   taskController.returnAllTask(req, res);
 });
+
+app.get('/tasks/:id', (req: Request, res: Response) => {
+  taskController.returnById(req, res);
+});
+
+app.put('/tasks/:id', (req: Request, res: Response) => {
+  taskController.updateById(req, res);
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
