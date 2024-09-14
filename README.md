@@ -38,3 +38,17 @@ Para instalar as dependências do projeto, execute:
 
 ```bash
 npm install
+```
+
+Para o banco de dados, certifique que o prisma está instalado
+
+```bash
+npm install prisma --save-dev
+```
+E inicialize
+
+```bash
+npx prisma init
+```
+
+
