@@ -12,8 +12,16 @@ class TaskModels {
         })
     }
 
-    returnAll = async () => {
-        return await prisma.task.findMany()
+    returnAll = async (status: boolean) => {
+        if (status != null)
+            return await prisma.task.findMany({
+                where: {
+                    status: status
+                }
+            })
+        else {
+            return await prisma.task.findMany()
+        }
     }
 
     returnById = async (id: number) => {
@@ -24,13 +32,6 @@ class TaskModels {
         })
     }
 
-    returnFinished = async (status: boolean) => {
-        return await prisma.task.findMany({
-            where: {
-                status: status,
-            }
-        })
-    }
 
     update = async (id: number, name: string, description: string, status: boolean) => {
         return await prisma.task.update({

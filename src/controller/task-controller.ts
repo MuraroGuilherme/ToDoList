@@ -17,7 +17,8 @@ class TaskController {
 
     returnAllTask = async (req: Request, res: Response) => {
         try {
-            const returnAllTask = await taskModels.returnAll();
+            const { status } = req.body
+            const returnAllTask = await taskModels.returnAll(status);
 
             res.status(200).json(returnAllTask)
         } catch {
@@ -29,6 +30,7 @@ class TaskController {
             const id = parseInt(req.params.id);
             if (id) {
                 const returnbyId = await taskModels.returnById(id);
+
                 res.status(200).json(returnbyId)
             }
             else {
@@ -39,6 +41,7 @@ class TaskController {
             res.status(500).json({ error: 'Error on calling the task' })
         }
     }
+
 
     updateTask = async (req: Request, res: Response) => {
         try {
@@ -62,6 +65,7 @@ class TaskController {
             const id = parseInt(req.params.id);
             if (id) {
                 const deleteTask = await taskModels.delete(id)
+
                 res.status(200).json({ message: 'Task successfully deleted' })
 
             } else {
