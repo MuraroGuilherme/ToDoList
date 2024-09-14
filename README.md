@@ -48,7 +48,11 @@ npm install prisma --save-dev
 E inicialize
 
 ```bash
-npx prisma init
+npx prisma db push
 ```
 
+Crie um arquivo .env na raiz do projeto e defina a variável para conectar-se ao banco
+```bash
+DATABASE_URL="mysql://user:password@localhost:3000/todolist"
+```
 
