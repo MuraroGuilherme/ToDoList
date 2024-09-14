@@ -34,7 +34,7 @@ Esta API visa proporcionar uma solução completa e eficiente para o gerenciamen
 
 Clone o repositório
 ```bash
-https://github.com/MuraroGuilherme/ToDoList
+git clone https://github.com/MuraroGuilherme/ToDoList
 ```
 
 Certifique-se de que você tem o [Node.js](https://nodejs.org/) e o npm instalados. Caso não tenha, faça o download e instale a partir do site oficial do Node.js.
